@@ -10,31 +10,65 @@
     .text-#{$key} {
         color: $val;
     }
+    
+    .text-hover-#{$key} {
+        &:hover {
+            color: $val;
+        }
+    }
 
     .bg-#{$key} {
         background-color: $val;
     }
 
-    //light variants for each color
-    @for $i from 1 through 9 {
-        .text-#{$key}-light-#{$i} {
-            color: mix(white, $val, $i * 10%);
+    //only create light and dark variants if color is not black or white
+    @if($val != black and $val != white) {
+        //light variants for each color
+        @for $i from 1 through 9 {
+            .text-#{$key}-light-#{$i} {
+                color: mix(white, $val, $i * 10%);
+            }
+
+            .text-hover-#{$key}-light-#{$i} {
+                &:hover {
+                    color: mix(white, $val, $i * 10%);
+                }
+            }
+
+            .bg-#{$key}-light-#{$i} {
+                background-color: mix(white, $val, $i * 10%);
+            }
         }
 
-        .bg-#{$key}-light-#{$i} {
-            background-color: mix(white, $val, $i * 10%);
+        //dark variants 
+        @for $i from 1 through 9 {
+            .text-#{$key}-dark-#{$i} {
+                color: mix(black, $val, $i * 10%);
+            }
+
+            .text-hover-#{$key}-dark-#{$i} {
+                &:hover {
+                    color: mix(black, $val, $i * 10%);
+                }
+            }
+
+            .bg-#{$key}-dark-#{$i} {
+                background-color: mix(black, $val, $i * 10%);
+            }
         }
     }
+}
 
-    //dark variants 
-    @for $i from 1 through 9 {
-        .text-#{$key}-light-#{$i} {
-            color: mix(black, $val, $i * 10%);
-        }
 
-        .bg-#{$key}-light-#{$i} {
-            background-color: mix(black, $val, $i * 10%);
-        }
+
+//if statements
+@if(10 > 5) {
+    .text-if {
+        color: red;
+    }
+} @else {
+    .text-if {
+        color: blue;
     }
 }
 

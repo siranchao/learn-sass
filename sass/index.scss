@@ -1,0 +1,17 @@
+/*
+import thiscss lib into your own project
+simple create a sass folder and import the lib
+*/
+
+/*
+you can add your own variables here to override the default settings
+
+e.g 
+$primary: #ff0000;
+$base-padding: 1rem;
+$base-border-radius: 20px;
+*/
+
+@import 'src';
+
+
